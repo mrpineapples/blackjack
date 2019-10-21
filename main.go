@@ -7,6 +7,7 @@ import (
 	"github.com/mrpineapples/deck"
 )
 
+// Hand represents a players hand.
 type Hand []deck.Card
 
 func (h Hand) String() string {
@@ -17,6 +18,7 @@ func (h Hand) String() string {
 	return strings.Join(strs, ", ")
 }
 
+// DealerString returns the dealers hand, only showing the first card.
 func (h Hand) DealerString() string {
 	return h[0].String() + ", **HIDDEN**"
 }
