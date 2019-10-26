@@ -135,6 +135,7 @@ func main() {
 
 		var input string
 		for gs.State == StatePlayerTurn {
+			fmt.Println("Your current score is:", gs.Player.Score())
 			fmt.Println("Player:", gs.Player)
 			fmt.Println("Dealer:", gs.Dealer.DealerString())
 			fmt.Println("What will you do? (h)it, (s)tand")
