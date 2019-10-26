@@ -152,9 +152,7 @@ func main() {
 			case "s":
 				gs = Stand(gs)
 			default:
-				if input != "s" {
-					color.HiYellow("\"%s\" is not a valid option 🤕. Try again.\n\n", input)
-				}
+				color.HiYellow("\"%s\" is not a valid option 🤕. Try again.\n\n", input)
 			}
 		}
 
