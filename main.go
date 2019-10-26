@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/mrpineapples/deck"
 )
 
@@ -109,15 +110,15 @@ func EndGame(gs GameState) GameState {
 	fmt.Println("Dealer:", ret.Dealer, "\nScore:", dScore)
 	switch {
 	case pScore > 21:
-		fmt.Println("You busted! You lose 😢")
+		color.Red("You busted! You lose 😢")
 	case dScore > 21:
-		fmt.Println("Dealer busted! You win 🎉")
+		color.Green("Dealer busted! You win 🎉")
 	case pScore > dScore:
-		fmt.Println("You win 🎉")
+		color.Green("You win 🎉")
 	case dScore > pScore:
-		fmt.Println("You lose 😢")
+		color.Red("You lose 😢")
 	case dScore == pScore:
-		fmt.Println("Draw!")
+		color.HiYellow("Draw!")
 	}
 	fmt.Println()
 	ret.Player = nil
@@ -135,7 +136,12 @@ func main() {
 
 		var input string
 		for gs.State == StatePlayerTurn {
-			fmt.Println("Your current score is:", gs.Player.Score())
+			score := gs.Player.Score()
+			if score > 21 {
+				color.Red("Your current score is: %d", score)
+			} else {
+				color.Green("Your current score is: %d", score)
+			}
 			fmt.Println("Player:", gs.Player)
 			fmt.Println("Dealer:", gs.Dealer.DealerString())
 			fmt.Println("What will you do? (h)it, (s)tand")
@@ -147,7 +153,7 @@ func main() {
 				gs = Stand(gs)
 			default:
 				if input != "s" {
-					fmt.Printf("\"%s\" is not a valid option 🤕. Try again.\n\n", input)
+					color.HiYellow("\"%s\" is not a valid option 🤕. Try again.\n\n", input)
 				}
 			}
 		}
