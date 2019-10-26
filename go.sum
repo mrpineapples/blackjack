@@ -7,6 +7,8 @@ github.com/mattn/go-isatty v0.0.10 h1:qxFzApOv4WsAL965uUPIsXzAKCZxN2p9UqdhFS4ZW1
 github.com/mattn/go-isatty v0.0.10/go.mod h1:qgIWMr58cqv1PHHyhnkY9lrL7etaEgOFcMEpPG5Rm84=
 github.com/mrpineapples/deck v0.0.0-20191020234904-f0957ce79013 h1:7mo4f4/1xh7I312/6yXTOXVVfdevwiKRHAJlQy+ydY4=
 github.com/mrpineapples/deck v0.0.0-20191020234904-f0957ce79013/go.mod h1:qJzd74traMAb3ha0xTekonOIUCn0kFRTjDAkC8+BnYQ=
+github.com/mrpineapples/deck v0.0.0-20191026204004-13b645e870c6 h1:vidEIHX7+pc0YsthwghpfWJW3gDJXcaocY1LQ5ALeT4=
+github.com/mrpineapples/deck v0.0.0-20191026204004-13b645e870c6/go.mod h1:qJzd74traMAb3ha0xTekonOIUCn0kFRTjDAkC8+BnYQ=
 golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20191008105621-543471e840be h1:QAcqgptGM8IQBC9K/RC4o+O9YmqEm0diQn9QmZw/0mU=
 golang.org/x/sys v0.0.0-20191008105621-543471e840be/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

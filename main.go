@@ -16,12 +16,12 @@ func (h Hand) String() string {
 	for i := range h {
 		strs[i] = h[i].String()
 	}
-	return strings.Join(strs, ", ")
+	return strings.Join(strs, "  , ")
 }
 
 // DealerString returns the dealers hand, only showing the first card.
 func (h Hand) DealerString() string {
-	return h[0].String() + ", **HIDDEN**"
+	return h[0].String() + "  , **HIDDEN**"
 }
 
 // Score returns the current players score.
