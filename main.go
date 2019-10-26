@@ -23,6 +23,8 @@ func (h Hand) DealerString() string {
 	return h[0].String() + ", **HIDDEN**"
 }
 
+// Score returns the current players score.
+// It handles the values of Ace's if necessary.
 func (h Hand) Score() int {
 	minScore := h.MinScore()
 	if minScore > 11 {
@@ -39,6 +41,7 @@ func (h Hand) Score() int {
 	return minScore
 }
 
+// MinScore returns the minimum possible score (i.e. Ace is always 1).
 func (h Hand) MinScore() int {
 	score := 0
 	for _, c := range h {
@@ -54,12 +57,14 @@ func min(a, b int) int {
 	return b
 }
 
+// Shuffle combines three decks and randomizes the order.
 func Shuffle(gs GameState) GameState {
 	ret := clone(gs)
 	ret.Deck = deck.New(deck.Deck(3), deck.Shuffle)
 	return ret
 }
 
+// Deal is called at the start of a game and gives each player two cards.
 func Deal(gs GameState) GameState {
 	ret := clone(gs)
 	ret.Player = make(Hand, 0, 5)
@@ -75,6 +80,7 @@ func Deal(gs GameState) GameState {
 	return ret
 }
 
+// Hit takes a card from the deck and adds it to the current hand.
 func Hit(gs GameState) GameState {
 	ret := clone(gs)
 	hand := ret.CurrentPlayer()
@@ -87,13 +93,15 @@ func Hit(gs GameState) GameState {
 	return ret
 }
 
+// Stand ends the current players turn.
 func Stand(gs GameState) GameState {
 	ret := clone(gs)
 	ret.State++
 	return ret
 }
 
-func EndHand(gs GameState) GameState {
+// EndGame displays the score and winner/loser of the current game.
+func EndGame(gs GameState) GameState {
 	ret := clone(gs)
 	pScore, dScore := ret.Player.Score(), ret.Dealer.Score()
 	fmt.Println("==FINAL HANDS==")
@@ -151,7 +159,7 @@ func main() {
 			}
 		}
 
-		gs = EndHand(gs)
+		gs = EndGame(gs)
 	}
 }
 
@@ -159,14 +167,17 @@ func draw(cards []deck.Card) (deck.Card, []deck.Card) {
 	return cards[0], cards[1:]
 }
 
+// State represents the current phase of the game.
 type State int8
 
+// The three game states.
 const (
 	StatePlayerTurn = iota
 	StateDealerTurn
 	StateHandOver
 )
 
+// GameState is an object which can represent the game's state at any given momemnt.
 type GameState struct {
 	Deck   []deck.Card
 	State  State
@@ -174,6 +185,7 @@ type GameState struct {
 	Dealer Hand
 }
 
+// CurrentPlayer a pointer to the hand of the current player.
 func (gs *GameState) CurrentPlayer() *Hand {
 	switch gs.State {
 	case StatePlayerTurn:
