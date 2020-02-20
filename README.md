@@ -1,4 +1,4 @@
-# blackjack (WIP)
+# blackjack
 Command line blackjack game
 
 ### Getting started
